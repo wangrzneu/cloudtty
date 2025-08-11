@@ -267,8 +267,14 @@ func (c *Controller) syncCloudShell(ctx context.Context, cloudshell *cloudshellv
 	}
 
 	// TODO: when cloudshell image be changed, the image of binding worker is different with the spce.image
-
 	if worker == nil {
+		nodeSelector := make(map[string]string)
+		for k, v := range c.nodeSelector {
+			nodeSelector[k] = v
+		}
+		for k, v := range cloudshell.Spec.NodeSelector {
+			nodeSelector[k] = v
+		}
 		nodeSelectorString, err := util.MapToJSONString(c.nodeSelector)
 		if err != nil {
 			return nil, fmt.Errorf("failed to marshal node selector for cloudshell, err: %v", err)

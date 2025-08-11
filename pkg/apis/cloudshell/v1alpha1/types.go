@@ -115,6 +115,12 @@ type CloudShellSpec struct {
 	// Ttyd project called client options, Reference: https://github.com/tsl0922/ttyd/wiki/Client-Options.
 	// +optional
 	TtydClientOptions map[string]string `json:"ttydClientOptions,omitempty"`
+
+	// NodeSelector is a selector which must be true for the cloudshell pod to fit on a node.
+	// Selector which must match a node's labels for the cloudshell pod to be scheduled on that node.
+	// +optional
+	// +mapType=atomic
+	NodeSelector map[string]string `json:"nodeSelector,omitempty" protobuf:"bytes,7,rep,name=nodeSelector"`
 }
 
 type ResourceSetting struct {

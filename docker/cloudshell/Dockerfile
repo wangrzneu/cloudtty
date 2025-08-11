@@ -24,7 +24,7 @@ RUN echo "https://mirrors.aliyun.com/alpine/v3.20/main/" >> /etc/apk/repositorie
     && ./configure \
     && make \
     && make install \
-    && apk add --no-cache ca-certificates \
+    && apk add --no-cache ca-certificates sshpass \
     && ln -s /usr/local/bin/lrz	/usr/bin/rz \
     && ln -s /usr/local/bin/lsz	/usr/bin/sz \
     && apk add bash-completion \

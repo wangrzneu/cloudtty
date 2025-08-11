@@ -225,6 +225,14 @@ spec:
                       created in it. if it's empty, default the cloudshell namespace.
                     type: string
                 type: object
+              nodeSelector:
+                additionalProperties:
+                  type: string
+                description: |-
+                  NodeSelector is a selector which must be true for the cloudshell pod to fit on a node.
+                  Selector which must match a node's labels for the cloudshell pod to be scheduled on that node.
+                type: object
+                x-kubernetes-map-type: atomic
               once:
                 description: accept only one client and exit on disconnection
                 type: boolean
